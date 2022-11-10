@@ -1,4 +1,4 @@
-namespace web_app
+namespace web_app.Models
 {
     public class WeatherForecast
     {
