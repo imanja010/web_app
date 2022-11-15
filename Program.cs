@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<FavouritesService>();
 builder.Services.AddScoped<ArtistService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<SongService>();
 
 var app = builder.Build();
 
