@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Drawing;
 using web_app.Models;
+using web_app.Services;
 
 namespace web_app.Controllers
 {
@@ -7,15 +9,20 @@ namespace web_app.Controllers
     [Route("[controller]")]
     public class UserController : Controller
     {
-        [HttpGet(Name = "User")]
+        private UserService _userService;
+
+        public UserController(UserService userService)
+        {
+            _userService = userService;
+        }
+
+
+        [HttpGet(Name = "GetUser")]
         public User Get()
         {
-            return new User()
-            {
-                Username = "Test Username",
-                Password = "Test Password",
-                Email = "Test Email"
-            };
+            User result = _userService.GetUser();
+            result.Username = "Something else";
+            return result;
         }
     }
 }
