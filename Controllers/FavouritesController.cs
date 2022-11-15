@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using web_app.Models;
+using web_app.Services;
 
 namespace web_app.Controllers
 {
@@ -7,15 +8,17 @@ namespace web_app.Controllers
     [Route("[controller]")]
     public class FavouritesController : Controller
     {
+        private FavouritesService _exampleService;
+
+        public FavouritesController(FavouritesService exampleService)
+        {
+            _exampleService = exampleService;
+        }
+
         [HttpGet(Name = "GetFavourites")]
         public Favourites Get()
         {
-            return new Favourites()
-            {
-                Song = "TestSong",
-                Artist = "TestArtist",
-                Album = "TestAlbum"
-            };
+            return _exampleService.GetFavourites();
         }
     }
 }
