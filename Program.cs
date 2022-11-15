@@ -10,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<FavouritesService>();
 builder.Services.AddScoped<ArtistService>();
+builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
