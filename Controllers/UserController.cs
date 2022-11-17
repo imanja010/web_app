@@ -17,12 +17,17 @@ namespace web_app.Controllers
         }
 
 
-        [HttpGet(Name = "GetUser")]
-        public User Get()
+        [HttpGet("{id:long}")]
+        public User Get(long id)
         {
-            User result = _userService.GetUser();
+            User result = _userService.GetUser(id);
             result.Username = "Something else";
             return result;
+        }
+        [HttpGet()]
+        public List<User> Get()
+        {
+            return _userService.Get();
         }
     }
 }
