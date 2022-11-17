@@ -7,12 +7,14 @@ namespace web_app.Services
         private List<Artist> _artistlist = new List<Artist> {
             new Artist()
             {
+                Id=1,
                 Album = "Album",
                 Name= "Test",
                 Song = "_Song"
             },
             new Artist()
             {
+                Id=2,
                 Song = "Song",
                 Album= "Test",
                 Name= "Test1",
@@ -20,15 +22,15 @@ namespace web_app.Services
         };
 
 
-        public Artist GetArtist()
+        public Artist GetArtist(long id)
         {
-            return new Artist()
-            {
-                Name = "TestName",
-                Album = "TestAlbum",
-                Song = "TestSong"
-            };
-        }  
+            return _artistlist.FirstOrDefault(a => a.Id == id);
+        }
+        public List<Artist> GetArtists()
+        {
+            return _artistlist;
+        }
+
     }
 
 
