@@ -19,13 +19,16 @@ namespace web_app.Services
             {
                 Email="optimus.denk@gmail.com",
                 Username="Djole1",
-                Password="volimJelenuKarleusu"
+                Password="volimJelenuKarleusu",
+                Id=1,
+               
             },
             new User()
             {
                 Email="djoletov.drugi.mejl@gmail.com",
                 Username="Djole2",
-                Password="VolimAcuLukasa"
+                Password="VolimAcuLukasa",
+                Id=2
             }
         };
     }
