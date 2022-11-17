@@ -1,6 +1,6 @@
 ﻿namespace web_app.Models
 {
-    public class Favourites
+    public class Favourites: Entity
     {
         public string Song { get; set; }
         public string Album { get; set; }
