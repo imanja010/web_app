@@ -14,11 +14,16 @@ namespace web_app.Controllers
         {
             _songService = songService;
         }
-        [HttpGet(Name = "GetSong")]
-        public Song Get()
+        [HttpGet("{id:long}")]
+        public Song Get(long id)
         {
-           Song result = _songService.GetSong();
-            result.SongArtist = "Nesto drugo";
+           Song result = _songService.GetSong(id);
+           return result;
+        }
+        [HttpGet()]
+        public List<Song> Get()
+        {
+            List<Song> result = _songService.GetAll();
             return result;
         }
     }
