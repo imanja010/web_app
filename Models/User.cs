@@ -2,7 +2,7 @@
 
 namespace web_app.Models
 {
-    public class User
+    public class User: Entity
     {
 
         public string Username { get; set; }

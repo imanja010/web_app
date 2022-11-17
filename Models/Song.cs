@@ -1,6 +1,6 @@
 ﻿namespace web_app.Models
 {
-    public class Song
+    public class Song: Entity
     {
         public string SongName { get; set; }
         public string SongArtist { get; set; }
