@@ -21,11 +21,28 @@ namespace web_app.Controllers
         }
 
         [HttpGet()]
-        public List<Artist> Get()
+        public IEnumerable<Artist> Get([FromQuery]string? search=null)
         {
-            return _artistService.GetArtists();
+            if (search == null)
+            {
+                return _artistService.GetArtists();
+            }
+            return _artistService.GetArtists()
+                .Where(x => x.Name
+                .Contains(search, StringComparison.OrdinalIgnoreCase));
 
         }
+        [HttpPost]
+        public Artist Post([FromBody] Artist artists)
+        {
+            _artistService.AddArtist(artists);
+            return artists;
+        }
 
+        [HttpDelete("{id:long}")]
+        public void Delete(long id)
+        {
+            _artistService.Remove(id);
+        }
     }
 }
