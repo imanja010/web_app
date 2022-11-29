@@ -31,6 +31,19 @@ namespace web_app.Services
             return _artistlist;
         }
 
+        public void AddArtist(Artist artists)
+        {
+            _artistlist.Add(artists);
+        }
+
+        internal void Remove(long id)
+        {
+            var item = _artistlist.FirstOrDefault(_ => _.Id == id);
+            if (item != null)
+            {
+                _artistlist.Remove(item);
+            }
+        }
     }
 
 
