@@ -15,10 +15,16 @@ namespace web_app.Controllers
             _exampleService = exampleService;
         }
 
-        [HttpGet(Name = "GetFavourites")]
-        public Favourites Get()
+        [HttpGet("{id:long}")]
+        public Favourites Get(long id)
         {
-            return _exampleService.GetFavourites();
+            return _exampleService.GetFavourites(id);
+        }
+        [HttpGet()]
+        public List<Favourites> Get()
+        {
+
+            return _exampleService.GetAll();
         }
     }
 }
