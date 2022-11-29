@@ -29,7 +29,28 @@ namespace web_app.Services
                 Email="djoletov.drugi.mejl@gmail.com",
                 Username="Djole2",
                 Password="VolimAcuLukasa",
-            }
+            },
+            new User()
+            {
+                Id=3,
+                Email="djoletov.drugi.mejl@gmail.com",
+                Username="Test",
+                Password="VolimAcuLukasa",
+            },
+            new User()
+            {
+                Id=4,
+                Email="djoletov.drugi.mejl@gmail.com",
+                Username="Test2",
+                Password="VolimAcuLukasa",
+            },
+            new User()
+            {
+                Id=5,
+                Email="djoletov.drugi.mejl@gmail.com",
+                Username="Test3",
+                Password="VolimAcuLukasa",
+            },
         };
     }
 }
