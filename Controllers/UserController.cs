@@ -9,6 +9,7 @@ namespace web_app.Controllers
     [Route("[controller]")]
     public class UserController : Controller
     {
+
         private UserService _userService;
 
         public UserController(UserService userService)
@@ -21,13 +22,23 @@ namespace web_app.Controllers
         public User Get(long id)
         {
             User result = _userService.GetUser(id);
-            result.Username = "Something else";
             return result;
         }
         [HttpGet()]
-        public List<User> Get()
+        public IEnumerable<User> Get(string? search=null)
         {
-            return _userService.Get();
+            if (search == null)
+            {
+                return _userService.Get();
+            }
+            return _userService.Get().Where(x => x.Username.Contains(search, StringComparison.OrdinalIgnoreCase));
+        }
+
+        [HttpPost]
+        public User Post([FromBody]User user)
+        {
+            _userService.AddUser(user);
+            return user;
         }
     }
 }
