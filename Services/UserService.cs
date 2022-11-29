@@ -21,7 +21,6 @@ namespace web_app.Services
                 Email="optimus.denk@gmail.com",
                 Username="Djole1",
                 Password="volimJelenuKarleusu",
-                Id=1,
                
             },
             new User()
@@ -30,7 +29,6 @@ namespace web_app.Services
                 Email="djoletov.drugi.mejl@gmail.com",
                 Username="Djole2",
                 Password="VolimAcuLukasa",
-                Id=2
             }
         };
     }
