@@ -13,6 +13,11 @@ namespace web_app.Services
             return userList; 
         }
 
+        public void AddUser(User user)
+        {
+            userList.Add(user);
+        }
+
         private List<User> userList = new List<User>
         {
             new User()
