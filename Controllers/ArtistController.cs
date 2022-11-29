@@ -13,11 +13,19 @@ namespace web_app.Controllers
         {
             _artistService = exempleService;
         }
-        [HttpGet(Name = "GetArtist")]
-        public Artist Get()
+        [HttpGet("{id:long}")]
+        public Artist Get(long id)
         {
-            Artist result = _artistService.GetArtist();
+            Artist result = _artistService.GetArtist(id);
             return result;
         }
+
+        [HttpGet()]
+        public List<Artist> Get()
+        {
+            return _artistService.GetArtists();
+
+        }
+
     }
 }
