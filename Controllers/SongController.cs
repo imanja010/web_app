@@ -21,10 +21,29 @@ namespace web_app.Controllers
            return result;
         }
         [HttpGet()]
-        public List<Song> Get()
+        public IEnumerable<Song> Get([FromQuery] string? search = null)
         {
-            List<Song> result = _songService.GetAll();
+            if (search == null)
+            {
+                return _songService.GetAll();
+            }
+            IEnumerable<Song> result = _songService.GetAll()
+                .Where(x=> x.SongName
+                .Contains(search, StringComparison.OrdinalIgnoreCase));
             return result;
+        }
+        [HttpPost]
+        public Song Post([FromBody] Song song)
+        {
+            
+            _songService.AddSong(song);
+            return song;
+        }
+        [HttpDelete("{id:long}")]
+        public void Delete( long id)
+        {
+
+            _songService.Remove(id);
         }
     }
 }
