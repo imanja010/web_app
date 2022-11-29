@@ -4,19 +4,20 @@ namespace web_app.Services
 {
     public class UserService
     {
-        public User GetUser()
+        public User GetUser(long id)
         {
-            return new User()
-            {
-                Username = "TestUsername",
-                Email = "TestEmail",
-                Password = "TestPassword"
-            };
+            return userList.FirstOrDefault(X => X.Id == id);
         }
+        public List<User> Get()
+        {
+            return userList; 
+        }
+
         private List<User> userList = new List<User>
         {
             new User()
             {
+                Id=1,
                 Email="optimus.denk@gmail.com",
                 Username="Djole1",
                 Password="volimJelenuKarleusu",
@@ -25,6 +26,7 @@ namespace web_app.Services
             },
             new User()
             {
+                Id=2,
                 Email="djoletov.drugi.mejl@gmail.com",
                 Username="Djole2",
                 Password="VolimAcuLukasa",
