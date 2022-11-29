@@ -4,24 +4,32 @@ namespace web_app.Services
 {
     public class SongService
     {
-        public Song GetSong()
+        public Song GetSong(long id)
         {
-            return new Song()
-            {
-                SongName = "Insomnia",
+            return songList.FirstOrDefault(x => x.Id == id);
 
-                SongArtist = "Karleusa",
 
-                SongDescription = "Najjaca pesma ikada, nasa najbolja umetnica je kreirala najjaca je",
+        }
+        public List<Song> GetAll()
+        {
+            return songList;
 
-                SongAlbum = "Diva"
 
-            };
         }
         private List<Song> songList = new List<Song>
         {
+            new Song()
+            {
+                Id = 1,
+                SongName = "Insomnia",
+                SongArtist = "Karleusa",
+                SongDescription = "Najjaca pesma ikada, nasa najbolja umetnica je kreirala najjaca je",
+                SongAlbum = "Diva"
+
+            },
             new Song() 
             {
+                Id= 2,
                 SongAlbum="Kokain",
                 SongArtist ="Aca Lukas",
                 SongName = "Volis li me",
@@ -29,6 +37,7 @@ namespace web_app.Services
             },
             new Song()
             {
+                Id =3,
                 SongAlbum="Core",
                 SongArtist="Stone temple pilots",
                 SongDescription="A IM SMELLING LIKE THE ROSES SOMEBODY GAVE ME ON MY BIRTHDAY DEATHBED",
