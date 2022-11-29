@@ -20,11 +20,31 @@ namespace web_app.Controllers
         {
             return _exampleService.GetFavourites(id);
         }
-        [HttpGet()]
-        public List<Favourites> Get()
-        {
 
-            return _exampleService.GetAll();
+        [HttpGet()]
+        public IEnumerable<Favourites> Get([FromQuery] string? search = null)
+        {
+            if (search == null)
+            {
+                return _exampleService.GetAll();
+            }
+
+            return _exampleService.GetAll()
+                .Where(x => x.Song
+                .Contains(search, StringComparison.OrdinalIgnoreCase));
+        }
+
+        [HttpPost]
+        public Favourites Post([FromBody] Favourites favourites)
+        {
+            _exampleService.AddFav(favourites);
+            return favourites;
+        }
+
+        [HttpDelete("{id:long}")]
+        public void Delete(long id)
+        {
+            _exampleService.Remove(id);
         }
     }
 }

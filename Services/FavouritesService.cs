@@ -12,6 +12,21 @@ namespace web_app.Services
         {
             return favouritesList;
         }
+
+        public void AddFav(Favourites favourites)
+        {
+            favouritesList.Add(favourites);
+        }
+
+        internal void Remove(long id)
+        {
+            var itemForRemoval = favouritesList.FirstOrDefault(x => x.Id == id);
+            if (itemForRemoval != null)
+            {
+                favouritesList.Remove(itemForRemoval);
+            }
+        }
+
         private List<Favourites> favouritesList = new List<Favourites>
         {
          new Favourites()
