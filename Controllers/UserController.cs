@@ -39,5 +39,12 @@ namespace web_app.Controllers
             _userService.Add(user);
             return user;
         }
+
+        [HttpPut]
+        public User Put([FromBody] User user)
+        {
+            _userService.Put(user);
+            return user;
+        }
     }
 }
