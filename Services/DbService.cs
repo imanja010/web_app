@@ -30,5 +30,15 @@ namespace web_app.Services
                 _data.Remove(item);
             }
         }
+
+        public void Put(T itemForChange)
+        {
+            var item = _data.FirstOrDefault(x => x.Id == itemForChange.Id);
+            if (item != null)
+            {
+                _data.Remove(item);
+                _data.Add(itemForChange);
+            }
+        }
     }
 }
