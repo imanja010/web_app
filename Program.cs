@@ -10,8 +10,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FavouritesService>();
 builder.Services.AddSingleton<ArtistService>();
-builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<SongService>();
+builder.Services.AddSingleton(typeof(DbService<>));
 
 var app = builder.Build();
 
