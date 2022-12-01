@@ -8,16 +8,16 @@ namespace web_app.Controllers
     [Route("[controller]")]
     public class SongController : Controller
     {
-        private SongService _songService;
+        private DbService<Song> _songService;
 
-        public SongController(SongService  songService)
+        public SongController(DbService<Song> songService)
         {
             _songService = songService;
         }
         [HttpGet("{id:long}")]
         public Song Get(long id)
         {
-           Song result = _songService.GetSong(id);
+           Song result = _songService.GetById(id);
            return result;
         }
         [HttpGet()]
@@ -36,7 +36,7 @@ namespace web_app.Controllers
         public Song Post([FromBody] Song song)
         {
             
-            _songService.AddSong(song);
+            _songService.Add(song);
             return song;
         }
         [HttpDelete("{id:long}")]
@@ -45,5 +45,13 @@ namespace web_app.Controllers
 
             _songService.Remove(id);
         }
+        [HttpPut]
+
+        public Song Put([FromBody]Song song) 
+        {
+            _songService.Put(song);
+            return song;
+        }
+        
     }
 }
