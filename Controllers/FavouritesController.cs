@@ -8,9 +8,9 @@ namespace web_app.Controllers
     [Route("[controller]")]
     public class FavouritesController : Controller
     {
-        private FavouritesService _exampleService;
+        private DbService<Favourites> _exampleService;
 
-        public FavouritesController(FavouritesService exampleService)
+        public FavouritesController(DbService<Favourites> exampleService)
         {
             _exampleService = exampleService;
         }
@@ -18,7 +18,7 @@ namespace web_app.Controllers
         [HttpGet("{id:long}")]
         public Favourites Get(long id)
         {
-            return _exampleService.GetFavourites(id);
+            return _exampleService.GetById(id);
         }
 
         [HttpGet()]
@@ -37,7 +37,7 @@ namespace web_app.Controllers
         [HttpPost]
         public Favourites Post([FromBody] Favourites favourites)
         {
-            _exampleService.AddFav(favourites);
+            _exampleService.Add(favourites);
             return favourites;
         }
 
@@ -45,6 +45,12 @@ namespace web_app.Controllers
         public void Delete(long id)
         {
             _exampleService.Remove(id);
+        }
+        [HttpPut]
+        public Favourites Put([FromBody] Favourites favourites)
+        {
+            _exampleService.Put(favourites);
+            return favourites;
         }
     }
 }
