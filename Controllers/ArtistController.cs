@@ -8,15 +8,15 @@ namespace web_app.Controllers
     [Route("[controller]")]
     public class ArtistController : Controller
     {
-        private ArtistService _artistService;
-        public ArtistController(ArtistService exempleService)
+        private DbService<Artist> _artistService;
+        public ArtistController(DbService<Artist> exempleService)
         {
             _artistService = exempleService;
         }
         [HttpGet("{id:long}")]
         public Artist Get(long id)
         {
-            Artist result = _artistService.GetArtist(id);
+            Artist result = _artistService.GetById(id);
             return result;
         }
 
@@ -25,9 +25,9 @@ namespace web_app.Controllers
         {
             if (search == null)
             {
-                return _artistService.GetArtists();
+                return _artistService.GetAll();
             }
-            return _artistService.GetArtists()
+            return _artistService.GetAll()
                 .Where(x => x.Name
                 .Contains(search, StringComparison.OrdinalIgnoreCase));
 
@@ -35,7 +35,7 @@ namespace web_app.Controllers
         [HttpPost]
         public Artist Post([FromBody] Artist artists)
         {
-            _artistService.AddArtist(artists);
+            _artistService.Add(artists);
             return artists;
         }
 
@@ -44,5 +44,12 @@ namespace web_app.Controllers
         {
             _artistService.Remove(id);
         }
+        [HttpPut]
+        public Artist Put([FromBody]Artist artist)
+        {
+            _artistService.Put(artist);
+            return artist;
+        }
     }
+
 }
